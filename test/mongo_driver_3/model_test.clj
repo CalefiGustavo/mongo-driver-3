@@ -211,8 +211,10 @@
 
   (testing "replace one"
     (is (instance? ReplaceOneModel (m/write-model [:replace-one {:filter {:a "b"} :replacement {:a "c"}}])))
+    
     (are [expected arg]
-         (= expected (.isUpsert (.getOptions (m/write-model [:replace-one {:filter {:a "b"} :replacement {:a "c"} :upsert? arg}]))))
+      (let [write-model (m/write-model [:replace-one {:filter {:a "b"} :replacement {:a "c"} :upsert? arg}])]
+        (= expected (.isUpsert (.getReplaceOptions write-model))))
       true true
       false false
       false nil))

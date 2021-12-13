@@ -8,7 +8,11 @@
                                     :username      :env/clojars_user
                                     :password      :env/clojars_pass
                                     :sign-releases false}]]
-  :plugins [[lein-cljfmt "0.6.4"]]
-
+  :dependencies [[br.com.paygo/pgo-log "0.0.21"]
+                 [integrant "0.8.0"]]
+  :plugins [[lein-cljfmt "0.6.4"]
+            [s3-wagon-private "1.3.4"]]
+  :repositories [["paygo-snapshot" {:url        "s3p://paygo-mvn/snapshot" }]
+                 ["paygo-release" {:url        "s3p://paygo-mvn/release"}]]
   :profiles {:dev {:dependencies [[org.clojure/clojure "1.10.1"]
-                                  [org.mongodb/mongodb-driver-sync "3.11.2"]]}})
+                                  [org.mongodb/mongodb-driver-sync "4.4.0"]]}})
