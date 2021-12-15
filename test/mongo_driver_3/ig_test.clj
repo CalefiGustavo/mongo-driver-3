@@ -5,7 +5,6 @@
             [integrant.core :as ig])
   (:import (com.mongodb.client MongoClient MongoDatabase)))
 
-
 (def mongo-database {:db-name "my-db"
                      :uri     "mongodb://localhost:27017"})
 
